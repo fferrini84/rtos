@@ -195,7 +195,7 @@ IEEEPARstart{
 
 \end_inset
 
-H
+N
 \begin_inset ERT
 status collapsed
 
@@ -206,7 +206,7 @@ status collapsed
 
 \end_inset
 
-ere
+uma
 \begin_inset ERT
 status collapsed
 
@@ -217,8 +217,9 @@ status collapsed
 
 \end_inset
 
- is the text text text text text text text text text text text text text
- text text text.
+ (Non-Uniform Access Memory) refers to a computer memory design choice used
+ in multiprocessing, where the memory access time depends on the memory
+ location relative to a processor.
 \end_layout
 
 \begin_layout Section

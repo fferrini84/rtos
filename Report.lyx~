@@ -195,7 +195,7 @@ IEEEPARstart{
 
 \end_inset
 
-H
+N
 \begin_inset ERT
 status collapsed
 
@@ -206,7 +206,7 @@ status collapsed
 
 \end_inset
 
-ere
+uma
 \begin_inset ERT
 status collapsed
 
@@ -217,8 +217,21 @@ status collapsed
 
 \end_inset
 
- is the text text text text text text text text text text text text text
- text text text.
+ (Non-Uniform Access Memory) refers to a computer memory design choice used
+ in multiprocessing, where the memory access time depends on the memory
+ location relative to a processor; infact 
+\series bold
+NUMA
+\series default
+ means that it will take longer to access some regions of memory than others.
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
+In the 
 \end_layout
 
 \begin_layout Section
@@ -247,185 +260,10 @@ Evaluation
 \end_layout
 
 \begin_layout Section
-Conclusion
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-placement htbp
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\align center
-
-\family sans
-A single column figure goes here
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Captions go 
-\emph on
-under
-\emph default
- the figure
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Float table
-placement htbp
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption
-
-\begin_layout Plain Layout
-Table captions go 
-\emph on
-above
-\emph default
- the table
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0pt">
-<column alignment="center" valignment="top" width="0pt">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-delete
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-this
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-example
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-table
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
 Conclusions
 \end_layout
 
 \begin_layout Standard
-bla bla
-\end_layout
-
-\begin_layout Appendices
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Don't add text here!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-First appendix
-\end_layout
-
-\begin_layout Standard
-Citation: 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "IEEEexample:beebe_archive"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Second appendix
-\end_layout
-
-\begin_layout Section*
-Acknowlegment
-\end_layout
-
-\begin_layout Standard
-bla bla
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Remember though that your final submission is supposed to have all the bibliogra
-phy entries embedded in the LaTeX-file.
- This means you eventually have to copy the .bbl file into the latex file
- and remove the bibtex lines.
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "IEEEabrv,IEEEexample"

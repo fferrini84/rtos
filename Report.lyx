@@ -195,7 +195,7 @@ IEEEPARstart{
 
 \end_inset
 
-H
+N
 \begin_inset ERT
 status collapsed
 
@@ -206,7 +206,7 @@ status collapsed
 
 \end_inset
 
-ere
+uma
 \begin_inset ERT
 status collapsed
 
@@ -217,8 +217,46 @@ status collapsed
 
 \end_inset
 
- is the text text text text text text text text text text text text text
- text text text.
+ (Non-Uniform Access Memory) refers to a computer memory design choice used
+ in multiprocessing, where the memory access time depends on the memory
+ location relative to a processor; infact 
+\series bold
+NUMA
+\series default
+ means that it will take longer to access some regions of memory than others.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/numa.jpeg
+	groupId Figure
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the 
 \end_layout
 
 \begin_layout Section
@@ -248,107 +286,6 @@ Evaluation
 
 \begin_layout Section
 Conclusions
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Remember though that your final submission is supposed to have all the bibliogra
-phy entries embedded in the LaTeX-file.
- This means you eventually have to copy the .bbl file into the latex file
- and remove the bibtex lines.
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "IEEEabrv,IEEEexample"
-options "IEEEtran"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Biography
-\begin_inset Argument
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../examples/CV-image.png
-	width 1in
-	height 1.25in
-	keepAspectRatio
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Your Name
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- All about you and the what your interests are.
-\end_layout
-
-\begin_layout --Separator--
-
-\end_layout
-
-\begin_layout Biography without photo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Coauthor
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-Same again for the co-author, but without photo
 \end_layout
 
 \end_body
