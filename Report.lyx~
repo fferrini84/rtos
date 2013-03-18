@@ -87,72 +87,6 @@ A survey on resource management policies for NUMA architectures
 
 \begin_layout Author
 Francesco Gallo, 755748, Francesco Ferrini, 755508
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Your
-\begin_inset space ~
-\end_inset
-
-Name is with the Department of ..., ...
- Institute of ..., City, Country, e-mail: 
-\begin_inset CommandInset href
-LatexCommand href
-target "xxx@xxx.xxx"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Second
-\begin_inset space ~
-\end_inset
-
-Name is with the Department of ..., ...
- Institute of ..., City, Country, e-mail: 
-\begin_inset CommandInset href
-LatexCommand href
-target "xxx@xxx.xxx"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Third
-\begin_inset space ~
-\end_inset
-
-Name is with the Department of ..., ...
- Institute of ..., City, Country, e-mail: 
-\begin_inset CommandInset href
-LatexCommand href
-target "xxx@xxx.xxx"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Abstract
@@ -161,25 +95,6 @@ FIXME...
 
 \begin_layout Section
 Introduction
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The 
-\series bold
-
-\backslash
-IEEEPARstart
-\series default
- command is needed in the first paragraph of the document.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -219,7 +134,7 @@ status collapsed
 
  (Non-Uniform Access Memory) refers to a computer memory design choice used
  in multiprocessing, where the memory access time depends on the memory
- location relative to a processor; infact 
+ location relative to a processor; in fact 
 \series bold
 NUMA
 \series default
@@ -227,11 +142,79 @@ NUMA
 \end_layout
 
 \begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename img/numa.jpeg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Figure 1: A simple NUMA architecture design 
+\begin_inset CommandInset label
+LatexCommand label
+name "Figure-1:Numa"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-In the 
+In the Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Figure-1:Numa"
+
+\end_inset
+
+ it’s possible to see that in a NUMA multiprocessor the physical memory
+ of the system is distributed among individual processors but is still globally
+ addressable by all processors.
+ Sometimes, it is preferable to have more than one processor in the same
+ area.
+ Each of this computational area containing memory block and CPU, whether
+ it has one or more processors, is called node.Thus the cost of a memory
+ access is dependent on where the memory unit addressed is located; relative
+ to the processor some accesses may be local some may be remote.
+ So, with the introduction of NUMA, data locality becomes an important factor
+ because memory accesses have different costs depending on which memory
+ unit is addressed.
+ The scheduling module in the OS must cooperate with the memory management
+ in order to let an application access data mostly from the local memory.
+ NUMA systems can be classified in two categories, both for memory and for
+ processor; regarding memory there are symmetrical and asymmetrical distribution
+, meaning that accessing different memory nodes can or cannot cost the same.
+ Concerning processor it is possible to have homogeneous system, meaning
+ that all processors are equal in speed and processing power, opposed to
+ heterogeneous ones, where processors have different specifications even
+ inside the same node.
+ This type of architecture turns out to be exposed to some problems, and
+ the most important are: cache coherence, scheduling and memory management
+ and thread migration.
+ The first represent the problem of maintaining updated the values of the
+ same element in different memory location; this happens when there are
+ more process that have the same element loaded in their cache memories
+ and the current value is changed.
+ Scheduling and memory management are strictly connected; in fact they are
+ used to select the best way to load processes, according to the chosen
+ policy, and decide where to allocate memory concerning that process.
+ The last one is used to decide when it is suitable to migrate a thread
+ from a processor to another one or to a different node; this has an additional
+ cost, due to the migration of the memory associated with the thread.
 \end_layout
 
 \begin_layout Section
@@ -239,8 +222,7 @@ Solutions and Methods
 \end_layout
 
 \begin_layout Standard
-text text text text text text text text text text text text text text text
- Descrizione delle varie soluzioni/metodologie studiate e annessi risultati
+Descrizione delle varie soluzioni/metodologie studiate e annessi risultati
 \end_layout
 
 \begin_layout Subsection
@@ -261,90 +243,6 @@ Evaluation
 
 \begin_layout Section
 Conclusions
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-bibfiles "IEEEabrv,IEEEexample"
-options "IEEEtran"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Biography
-\begin_inset Argument
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../../examples/CV-image.png
-	width 1in
-	height 1.25in
-	keepAspectRatio
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Your Name
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- All about you and the what your interests are.
-\end_layout
-
-\begin_layout --Separator--
-
-\end_layout
-
-\begin_layout Biography without photo
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-{
-\end_layout
-
-\end_inset
-
-Coauthor
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-Same again for the co-author, but without photo
 \end_layout
 
 \end_body
