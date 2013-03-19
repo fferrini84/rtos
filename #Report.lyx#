@@ -87,72 +87,6 @@ A survey on resource management policies for NUMA architectures
 
 \begin_layout Author
 Francesco Gallo, 755748, Francesco Ferrini, 755508
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Your
-\begin_inset space ~
-\end_inset
-
-Name is with the Department of ..., ...
- Institute of ..., City, Country, e-mail: 
-\begin_inset CommandInset href
-LatexCommand href
-target "xxx@xxx.xxx"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Second
-\begin_inset space ~
-\end_inset
-
-Name is with the Department of ..., ...
- Institute of ..., City, Country, e-mail: 
-\begin_inset CommandInset href
-LatexCommand href
-target "xxx@xxx.xxx"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Third
-\begin_inset space ~
-\end_inset
-
-Name is with the Department of ..., ...
- Institute of ..., City, Country, e-mail: 
-\begin_inset CommandInset href
-LatexCommand href
-target "xxx@xxx.xxx"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Abstract
@@ -161,25 +95,6 @@ FIXME...
 
 \begin_layout Section
 Introduction
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-The 
-\series bold
-
-\backslash
-IEEEPARstart
-\series default
- command is needed in the first paragraph of the document.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -219,11 +134,8 @@ status collapsed
 
  (Non-Uniform Access Memory) refers to a computer memory design choice used
  in multiprocessing, where the memory access time depends on the memory
- location relative to a processor; in fact 
-\series bold
-NUMA
-\series default
- means that it will take longer to access some regions of memory than others.
+ location relative to a processor; in fact NUMA means that it will take
+ longer to access some regions of memory than others.
 \end_layout
 
 \begin_layout Standard
@@ -266,7 +178,60 @@ reference "Figure-1:Numa"
 
 \end_inset
 
+ it’s possible to see that in a NUMA multiprocessor the physical memory
+ of the system is distributed among individual processors but is still globally
+ addressable by all processors.
+ Sometimes, it is preferable to have more than one processor in the same
+ area.
+ Each of this computational area containing memory block and CPU, whether
+ it has one or more processors, is called node.Thus the cost of a memory
+ access is dependent on where the memory unit addressed is located; relative
+ to the processor some accesses may be local some may be remote.
+ So, with the introduction of NUMA, data locality becomes an important factor
+ because memory accesses have different costs depending on which memory
+ unit is addressed.
+ The scheduling module in the OS must cooperate with the memory management
+ in order to let an application access data mostly from the local memory.
+ NUMA systems can be classified in two categories, both for memory and for
+ processor; regarding memory there are symmetrical and asymmetrical distribution
+, meaning that accessing different memory nodes can or cannot cost the same.
+ Concerning processor it is possible to have homogeneous system, meaning
+ that all processors are equal in speed and processing power, opposed to
+ heterogeneous ones, where processors have different specifications even
+ inside the same node.
+ This type of architecture turns out to be exposed to some problems, and
+ the most important are: cache coherence, scheduling and memory management
+ and thread migration.
+ 
+\end_layout
 
+\begin_layout Standard
+In multiprocessor systems it is important to ensure cache coherency.
+ If each processor has a cache that reflects the state of various parts
+ of memory, it is possible that two or more caches may have copies of the
+ same line.
+ It is also possible that a given line may contain more than one lockable
+ data item.
+ If two threads make appropriately serialized changes to those data items,
+ the result could be that both caches end up with different, incorrect versions
+ of the line of memory.
+ In other words, the system's state is no longer coherent because the system
+ contains two different versions of what is supposed to be the content of
+ a specific area of memory.
+ There are 2 types of NUMA architectures that we have to analyse: NCC-NUMA
+ (Non Cache Coherent) and CC-NUMA (Cache Coherent).
+ In NCC-NUMA systems we have some software solutions, while in CC-NUMA we
+ have a cooperation of both software and hardware solutions.
+\end_layout
+
+\begin_layout Standard
+Scheduling and memory management are strictly connected; in fact they are
+ used to select the best way to load processes, according to the chosen
+ policy, and decide where to allocate memory concerning that process.
+ The last one is used to decide when it is suitable to migrate a thread
+ from a processor to another one or to a different node; this has an additional
+ cost, due to the migration of the memory associated with the thread.
+ (FIXME....RIVEDERE ULTIMO PARAGRAFO)
 \end_layout
 
 \begin_layout Section
@@ -274,19 +239,69 @@ Solutions and Methods
 \end_layout
 
 \begin_layout Standard
-Descrizione delle varie soluzioni/metodologie studiate e annessi risultati
+In this chapter will be presented some solutions about the problems introduced
+ in previous section, divided by argument.
+ Evaluations will be considered in the next chapter.
 \end_layout
 
 \begin_layout Subsection
-Scheduling
+Cache coherence
+\end_layout
+
+\begin_layout Standard
+As seen before, there are 2 types of NUMA architectures that will be analysed:
+ NCC-NUMA (Non Cache Coherent - NUMA) and CC-NUMA (Cache Coherent - NUMA).
+ 
+\end_layout
+
+\begin_layout Standard
+In NC-NUMA systems, [CIT.Shared memory multiprocessing di Norihisa Suzuki
+ ] explain that the inter-cache coherence problem can be solved if shared
+ data, or writable shared data strictly, are not cached with Cacheability
+ Marking Scheme.
+ An attribute bit, called cacheable bit, is provided in each page-table
+ entry to specify whether data in the associated virtual page are cacheable
+ or not.
+ So an OS, with the help of a compiler, marks only virtual pages, which
+ are mapped to either private space or read-only common space, as cacheable
+ pages.
+ When a cache miss occurs on accessing a line of a noncacheable page, an
+ MMU (memory managament unit) does not load the line into the cache.
+ While the page is marked noncacheable, all accesses to the page are always
+ performed in either local or remote memory.
+\end_layout
+
+\begin_layout Standard
+Conserning the same problem, [CIT.
+ Software Cache Coherence for Large Scale Multiprocessor - Leonidas I.
+ Kontothanassis and Michael L.
+ Scott] shown a new adaptive algorithm for software cache coherence that
+ reduces interprocessor communication and scales to large numbers of processors;
+ they then evaluate the tradeoffs among various write policies and the effect
+ on performance of using remote memory access.
+ Finally they also observe that certain simple program changes can greatly
+ improve performance.
+\end_layout
+
+\begin_layout Standard
+Regarding CC-Numa [CIT.
+ Cache coherency Techniques - Silvia Lametti] explains there are two protocols
+ that are used to guarantee coherence: snooping and directory-based.
+ Snooping system use a totally ordered network to directly broadcast coherence
+ transactions to all processors and memory.
+ Another solution is directory-based protocol; this one transmits coherence
+ transactions over an arbitrary point-to-point network to the corresponding
+ home directories which, in turn, redirect them to the processors caching
+ the line.
+ 
 \end_layout
 
 \begin_layout Subsection
-Threads migration
+Scheduling and memory management
 \end_layout
 
 \begin_layout Subsection
-Chache coherence
+Thread migration
 \end_layout
 
 \begin_layout Section
